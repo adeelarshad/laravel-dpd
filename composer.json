@@ -1,0 +1,40 @@
+{
+    "name": "proxi/laravel-dpd",
+    "description": "DPD Integration Services SOAP API PHP Bindings",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tahir Rasheed",
+            "email": "tahirrasheed208@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "illuminate/validation": "^8.0",
+        "illuminate/translation": "^8.0",
+        "doctrine/annotations": "^1.4",
+        "php-di/phpdoc-reader": "^2.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Proxi\\Dpd\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Proxi\\Dpd\\DpdServiceProvider"
+            ],
+            "aliases": {
+                "DPD": "Proxi\\Dpd\\Facades\\DPD"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
