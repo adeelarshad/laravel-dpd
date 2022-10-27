@@ -156,9 +156,9 @@ class Api
     protected function authenticate()
     {
         if (!$this->isTokenValid()) {
-            try {
-                $client = $this->getLoginService();
+            $client = $this->getLoginService();
 
+            try {
                 $response = $client->getAuth([
                     'delisId' => $this->delisId,
                     'password' => $this->password,
@@ -196,8 +196,9 @@ class Api
      */
     public function findParcelShopsByGeoData(GeoData $geoData)
     {
+        $client = $this->getParcelShopFinderService();
+
         try {
-            $client = $this->getParcelShopFinderService();
             $response = $client->findParcelShopsByGeoData($geoData->toDataArray());
 
             $shops = array();
@@ -222,8 +223,9 @@ class Api
      */
     public function storeOrders(PrintOptions $printOptions, Order $order)
     {
+        $client = $this->getShipmentService();
+
         try {
-            $client = $this->getShipmentService();
             $response = $client->storeOrders([
                 'printOptions' => $printOptions->toDataArray(),
                 'order' => $order->toDataArray()
@@ -243,8 +245,9 @@ class Api
      */
     public function getDepotData(DepotQuery $depotQuery)
     {
+        $client = $this->getDepotDataService();
+
         try {
-            $client = $this->getDepotDataService();
             $response = $client->getDepotData($depotQuery->toDataArray());
 
             return DepotData::fromStdClass($response->DepotData);
@@ -261,8 +264,9 @@ class Api
      */
     public function getTrackingData($parcelLabelNumber)
     {
+        $client = $this->getParcelLifeCycleService();
+
         try {
-            $client = $this->getParcelLifeCycleService();
             $response = $client->getTrackingData([
                 'parcelLabelNumber' => $parcelLabelNumber,
             ]);
